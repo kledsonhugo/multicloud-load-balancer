@@ -6,9 +6,9 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "lbtfkb001"
-    key            = "terraform.tfstate"
-    region         = "us-east-1"
-    use_lockfile   = true
+    bucket       = "lbtfkb001"
+    key          = "terraform.tfstate"
+    region       = "us-east-1"
+    use_lockfile = true
   }
 }

@@ -3,7 +3,7 @@ name: Terraform Multi Provider
 on:
   push:
     branches:
-    - main
+    - develop
   workflow_dispatch:
 
 env:
@@ -30,21 +30,21 @@ jobs:
     - run: terraform -chdir=./terraform/aws apply tfplan
     - run: terraform -chdir=./terraform/aws show
 
-  azure:
-    name: Terraform on Azure
-    runs-on: ubuntu-latest
-    env:
-      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-    steps:
-    - uses: hashicorp/setup-terraform@v3
-      with:
-        terraform_version: ${{ env.TERRAFORM_VERSION }}
-    - uses: actions/checkout@v4
-    - run: terraform -chdir=./terraform/azure init
-    - run: terraform -chdir=./terraform/azure validate
-    - run: terraform -chdir=./terraform/azure plan -destroy -out tfplan
-    - run: terraform -chdir=./terraform/azure apply tfplan
-    - run: terraform -chdir=./terraform/azure show
+  # azure:
+  #   name: Terraform on Azure
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+  #     ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+  #     ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+  #     ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+  #   steps:
+  #   - uses: hashicorp/setup-terraform@v3
+  #     with:
+  #       terraform_version: ${{ env.TERRAFORM_VERSION }}
+  #   - uses: actions/checkout@v4
+  #   - run: terraform -chdir=./terraform/azure init
+  #   - run: terraform -chdir=./terraform/azure validate
+  #   - run: terraform -chdir=./terraform/azure plan -destroy -out tfplan
+  #   - run: terraform -chdir=./terraform/azure apply tfplan
+  #   - run: terraform -chdir=./terraform/azure show
