@@ -7,5 +7,7 @@ module "compute" {
   vpc_id      = module.rede.vpc_id
   subnet1a_id = module.rede.subnet1a_id
   subnet1c_id = module.rede.subnet1c_id
+  vpc_cidr    = module.rede.vpc_cidr
+  elb_name    = "lbawskb0001"
   depends_on  = [module.rede]
 }
