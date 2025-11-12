@@ -93,7 +93,7 @@ resource "aws_security_group" "sgec2" {
 }
 
 data "template_file" "user_data" {
-    template = "${file("./aws/scripts/user_data.sh")}"
+    template = "${file("./scripts/user_data.sh")}"
 }
 
 resource "aws_instance" "instance01" {
