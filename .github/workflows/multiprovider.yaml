@@ -45,6 +45,6 @@ jobs:
     - uses: actions/checkout@v4
     - run: terraform -chdir=./terraform/azure init
     - run: terraform -chdir=./terraform/azure validate
-    - run: terraform -chdir=./terraform/azure plan -out tfplan
+    - run: terraform -chdir=./terraform/azure plan -destroy -out tfplan
     - run: terraform -chdir=./terraform/azure apply tfplan
     - run: terraform -chdir=./terraform/azure show
