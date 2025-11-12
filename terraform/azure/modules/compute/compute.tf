@@ -49,7 +49,7 @@ resource "azurerm_availability_set" "asvm" {
 }
 
 data "template_file" "user_data" {
-  template = file("./scripts/user_data.sh")
+  template = file("./modules/compute/scripts/user_data.sh")
 }
 
 resource "azurerm_virtual_machine" "vm01" {
