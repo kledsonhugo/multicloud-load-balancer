@@ -92,64 +92,44 @@ resource "aws_security_group" "sgec2" {
     }
 }
 
+data "template_file" "user_data" {
+    template = "${file("./aws/scripts/user_data.sh")}"
+}
+
 resource "aws_instance" "instance01" {
-    ami                    = "ami-0c101f26f147fa7fd"
+    ami                    = "ami-00a929b66ed6e0de6"
     instance_type          = "t2.micro"
     subnet_id              = aws_subnet.subnet1a.id
     vpc_security_group_ids = [aws_security_group.sgec2.id]
     key_name               = "vockey"
-    user_data              = <<EOF
-        #!/bin/bash
-        yum update -y
-        yum install -y httpd
-        echo "staticsite-lb-multi-cloud - AWS - instance01" > /var/www/html/index.html
-        service httpd restart
-    EOF
+    user_data_base64       = "${base64encode(data.template_file.user_data.rendered)}"
 }
 
 resource "aws_instance" "instance02" {
-    ami                    = "ami-0c101f26f147fa7fd"
+    ami                    = "ami-00a929b66ed6e0de6"
     instance_type          = "t2.micro"
     subnet_id              = aws_subnet.subnet1a.id
     vpc_security_group_ids = [aws_security_group.sgec2.id]
     key_name               = "vockey"
-    user_data              = <<EOF
-        #!/bin/bash
-        yum update -y
-        yum install -y httpd
-        echo "staticsite-lb-multi-cloud - AWS - instance02" > /var/www/html/index.html
-        service httpd restart
-    EOF
+    user_data_base64       = "${base64encode(data.template_file.user_data.rendered)}"
 }
 
 resource "aws_instance" "instance03" {
-    ami                    = "ami-0c101f26f147fa7fd"
+    ami                    = "ami-00a929b66ed6e0de6"
     instance_type          = "t2.micro"
     subnet_id              = aws_subnet.subnet1c.id
     vpc_security_group_ids = [aws_security_group.sgec2.id]
     key_name               = "vockey"
-    user_data              = <<EOF
-        #!/bin/bash
-        yum update -y
-        yum install -y httpd
-        echo "staticsite-lb-multi-cloud - AWS - instance03" > /var/www/html/index.html
-        service httpd restart
-    EOF
+    user_data_base64       = "${base64encode(data.template_file.user_data.rendered)}"
 }
 
 resource "aws_instance" "instance04" {
-    ami                    = "ami-0c101f26f147fa7fd"
+    ami                    = "ami-00a929b66ed6e0de6"
     instance_type          = "t2.micro"
     subnet_id              = aws_subnet.subnet1c.id
     vpc_security_group_ids = [aws_security_group.sgec2.id]
     key_name               = "vockey"
-    user_data              = <<EOF
-        #!/bin/bash
-        yum update -y
-        yum install -y httpd
-        echo "staticsite-lb-multi-cloud - AWS - instance04" > /var/www/html/index.html
-        service httpd restart
-    EOF
+    user_data_base64       = "${base64encode(data.template_file.user_data.rendered)}"
 }
 
 resource "aws_elb" "elb" {
