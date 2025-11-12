@@ -26,7 +26,6 @@ jobs:
         aws-session-token    : ${{ secrets.AWS_SESSION_TOKEN }}
         aws-region           : us-east-1
     - run: terraform -chdir=./terraform/aws init
-    - run: terraform -chdir=./terraform/aws validate
     - uses: bridgecrewio/checkov-action@master
       with:
         directory: ./terraform/aws
@@ -34,6 +33,7 @@ jobs:
         output_format: cli
         output_file_path: console
         soft_fail: true
+    - run: terraform -chdir=./terraform/aws validate
 
   azure:
     name: Testing for Azure code
@@ -49,7 +49,6 @@ jobs:
         terraform_version: ${{ env.TERRAFORM_VERSION }}
     - uses: actions/checkout@v4
     - run: terraform -chdir=./terraform/azure init
-    - run: terraform -chdir=./terraform/azure validate
     - uses: bridgecrewio/checkov-action@master
       with:
         directory: ./terraform/azure
@@ -57,3 +56,4 @@ jobs:
         output_format: cli
         output_file_path: console
         soft_fail: true
+    - run: terraform -chdir=./terraform/azure validate
