@@ -34,8 +34,6 @@ jobs:
         output_format: cli
         output_file_path: console
         soft_fail: true
-    - run: terraform -chdir=./terraform/aws plan -out tfplan
-    - run: terraform -chdir=./terraform/aws show
 
   azure:
     name: Testing for Azure code
@@ -59,5 +57,3 @@ jobs:
         output_format: cli
         output_file_path: console
         soft_fail: true
-    - run: terraform -chdir=./terraform/azure plan -out tfplan
-    - run: terraform -chdir=./terraform/azure show
