@@ -10,7 +10,7 @@ resource "aws_security_group" "sglb" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = [var.vpc_cidr]
+    cidr_blocks = [var.vpc_cidr_block]
   }
   ingress {
     description = "TCP/80 from All"
@@ -33,7 +33,7 @@ resource "aws_security_group" "sgec2" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = [var.vpc_cidr]
+    cidr_blocks = [var.vpc_cidr_block]
   }
   ingress {
     description = "TCP/80 from All"

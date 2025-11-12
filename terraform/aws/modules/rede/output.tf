@@ -10,6 +10,6 @@ output "subnet1c_id" {
   value = aws_subnet.subnet1c.id
 }
 
-output "vpc_cidr" {
+output "vpc_cidr_block" {
   value = aws_vpc.vpc.cidr_block
 }
