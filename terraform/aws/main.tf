@@ -97,6 +97,7 @@ resource "aws_instance" "instance01" {
     instance_type          = "t2.micro"
     subnet_id              = aws_subnet.subnet1a.id
     vpc_security_group_ids = [aws_security_group.sgec2.id]
+    key_name               = "vockey"
     user_data              = <<EOF
         #!/bin/bash
         yum update -y
@@ -111,6 +112,7 @@ resource "aws_instance" "instance02" {
     instance_type          = "t2.micro"
     subnet_id              = aws_subnet.subnet1a.id
     vpc_security_group_ids = [aws_security_group.sgec2.id]
+    key_name               = "vockey"
     user_data              = <<EOF
         #!/bin/bash
         yum update -y
@@ -125,6 +127,7 @@ resource "aws_instance" "instance03" {
     instance_type          = "t2.micro"
     subnet_id              = aws_subnet.subnet1c.id
     vpc_security_group_ids = [aws_security_group.sgec2.id]
+    key_name               = "vockey"
     user_data              = <<EOF
         #!/bin/bash
         yum update -y
@@ -139,6 +142,7 @@ resource "aws_instance" "instance04" {
     instance_type          = "t2.micro"
     subnet_id              = aws_subnet.subnet1c.id
     vpc_security_group_ids = [aws_security_group.sgec2.id]
+    key_name               = "vockey"
     user_data              = <<EOF
         #!/bin/bash
         yum update -y
