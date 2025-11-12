@@ -6,8 +6,8 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "rg-lbtfkb001"
-    storage_account_name = "lbtfkb002"
+    resource_group_name  = "rg-lbtf"
+    storage_account_name = "lbtfkb0001"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
   }
